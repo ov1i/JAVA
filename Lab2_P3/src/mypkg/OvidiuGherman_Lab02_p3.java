@@ -3,7 +3,7 @@ package mypkg;
 import java.util.Scanner;
 
 
-public class OvidiuGherman_Lab01_p3 {
+public class OvidiuGherman_Lab02_p3 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);

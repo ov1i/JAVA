@@ -7,7 +7,7 @@ import java.io.Console;
 
 
 
-public class OvidiuGherman_Lab01_p1 {
+public class OvidiuGherman_Lab02_p1 {
 
 	public static void main(String[] args) {
 			BufferedReader buffer;
