@@ -13,7 +13,7 @@
 
 #Dir And Others
 .metadata
-.demo
+**.demo
 **.project
 **.classpath
 **.settings
