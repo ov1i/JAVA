@@ -7,8 +7,13 @@ public class OvidiuGherman_Lab02_p4 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("Please enter a number: ");
-		int n = scanner.nextInt();
+		int n = 0;
+		
+		do {
+			System.out.print("Please enter a number: ");
+			n = scanner.nextInt();
+		}while(n <= 0);
+		
 		
 		scanner.close();
 		
