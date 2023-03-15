@@ -23,7 +23,7 @@ public class OvidiuGherman_Lab03_p1 {
 		
 		scanner.close();
 		
-		if(input.matches("\\d")) {
+		if(input.matches("\\d+")) {
 			int index = Integer.parseInt(input);
 			if(index < 0 || index > 12) 
 				System.out.println("Invalid index!");
