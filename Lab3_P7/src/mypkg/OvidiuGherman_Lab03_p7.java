@@ -2,6 +2,11 @@ package mypkg;
 
 import java.util.Scanner;
 
+/*
+ * Read from the keyboard an integer value bigger than 16.777.216. Use bit masks for isolating each of the 4 bytes
+ * of the read value. Display the initial and the isolated values as decimal, binary and hexadecimal strings.
+ */
+
 public class OvidiuGherman_Lab03_p7 {
 	static void printResult(int res, int b) {
 		System.out.println("The isolated byte(" + b + ") in binary is:" + Integer.toBinaryString(res));
@@ -28,7 +33,6 @@ public class OvidiuGherman_Lab03_p7 {
 			System.out.print("Please enter a value(>16777216): ");
 		    nr = scanner.nextInt();		
 		} while(nr < 16777216);
-		
 		scanner.close();
 		
 		System.out.println("The original number in binary is: " + Integer.toBinaryString(nr));
