@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /*
  * Write a Java application that reads an int value. If the int value is between 1-12, the corresponding string month
-will be displayed. If the value entered is a string and if it corresponds to a month of the year, display the numeric
-value of the month.
+ * will be displayed. If the value entered is a string and if it corresponds to a month of the year, display the numeric
+ * value of the month.
  */
 
 
