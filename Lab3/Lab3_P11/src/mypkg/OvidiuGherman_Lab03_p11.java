@@ -170,12 +170,18 @@ public class OvidiuGherman_Lab03_p11 {
 		int rows;
 		int columns;
 		
+		
+		/*
+		 * if(args.length == 0) System.exit(-1);
+		 * 
+		 * rows = columns = Integer.parseInt(args[0]);
+		 */
+
 		Scanner scanner = new Scanner(System.in);
-		
-		System.out.print("Please enter the number of rows and columns: ");
-		rows = columns = scanner.nextInt();
-		
+		System.out.print("Please enter the number of rows and columns: "); rows =
+		columns = scanner.nextInt();
 		scanner.close();
+	
 		gameElementsGeneration(hashMap,random,rows,columns);
 		int i = 1;
 		for(int key = 0; key < rows*columns; key++) {
