@@ -69,7 +69,7 @@ public class OvidiuGherman_Lab03_p11 {
 	static boolean checkCEndGame(Map<Integer,Character> hashMap, int rows, int columns, char c, int row) {
 		//case 4 (Columns)
 		int i = 0;
-		while(i<3){
+		while(i< columns){
 			if(hashMap.get(row +  i * rows) == null || !hashMap.get(row +  i * rows).equals(c)) { 
 				return false; 
 			}
