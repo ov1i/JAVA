@@ -80,7 +80,7 @@ public class OvidiuGherman_Lab04_P04 {
 			objs[i] = null; // we force the object to be eligible for collection
 		}
 		
-		/* Method 2 -> This will not show the message from the finalize method due to the fact, that the objects are not eligible for collection sooner yet.
+		/* Method 2 -> This will not show the message from the finalize method due to the fact, that the objects are not eligible for collection yet.
 		 * System.out.println("\n::Output::"); for(Person obj : objs) {
 		 * System.out.println("NAME: " + obj.getName() + "\n\t->LATITUDE: " +
 		 * obj.getLatitude() + "\n\t->LONGITUDE: " + obj.getLongitude()); }
