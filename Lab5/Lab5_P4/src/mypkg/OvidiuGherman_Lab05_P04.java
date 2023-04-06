@@ -133,15 +133,21 @@ public class OvidiuGherman_Lab05_P04 {
 		Fraction obj2 = new Fraction();
 		
 		Scanner scanner = new Scanner(System.in);
+		
 		System.out.println("The first fraction is: " + obj1.getA() + "/" + obj1.getB());
-		System.out.print("Please enter the first fration(a/b): ");
-		obj1.setA(scanner.nextInt());
-		obj1.setB(scanner.nextInt());
+		do {
+			System.out.print("Please enter the first fration(a/b): ");
+			obj1.setA(scanner.nextInt());
+			obj1.setB(scanner.nextInt());
+		}while(obj1.getB() == 0);
 		System.out.println("The new values of the first fraction is: " + obj1.getA() + "/" + obj1.getB());
+		
 		System.out.println("The second fraction is: " + obj2.getA() + "/" + obj2.getB());
-		System.out.print("Please enter the second fration(a/b): ");
-		obj2.setA(scanner.nextInt());
-		obj2.setB(scanner.nextInt());
+		do {
+			System.out.print("Please enter the second fration(a/b): ");
+			obj2.setA(scanner.nextInt());
+			obj2.setB(scanner.nextInt());
+		}while(obj2.getB() == 0);
 		System.out.println("The new values of the second fraction is: " + obj2.getA() + "/" + obj2.getB());
 		
 		
@@ -155,10 +161,20 @@ public class OvidiuGherman_Lab05_P04 {
 		System.out.println("The result of the addition is: " + additionObj.getA() + "/" + additionObj.getB());
 		
 		
-		System.out.print("Please enter a third fraction(a/b): ");
-		ExtendedFraction obj3 = new ExtendedFraction(scanner.nextInt(), scanner.nextInt());
-		System.out.print("Please enter a fourth fraction(a/b): ");
-		ExtendedFraction obj4 = new ExtendedFraction(scanner.nextInt(), scanner.nextInt());
+		int a,b;
+		do {
+			System.out.print("Please enter a third fraction(a/b): ");
+			a = scanner.nextInt();
+			b = scanner.nextInt();
+		} while(b == 0);
+		ExtendedFraction obj3 = new ExtendedFraction(a, b);
+		
+		do {
+			System.out.print("Please enter a fourth fraction(a/b): ");
+			a = scanner.nextInt();
+			b = scanner.nextInt();
+		} while(b == 0);
+		ExtendedFraction obj4 = new ExtendedFraction(a, b);
 		
 		scanner.close();
 		
