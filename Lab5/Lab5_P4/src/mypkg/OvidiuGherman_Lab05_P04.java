@@ -74,9 +74,14 @@ class Fraction {
 	public Fraction addition(Fraction obj1) {
 		Fraction tempRes = new Fraction();
 		
-		tempRes.setA(obj1.getA() + this.getA());
-		tempRes.setB(obj1.getB() + this.getB());
-		
+		if(obj1.getB() == this.getB()) {
+			tempRes.setA(obj1.getA() + this.getB());
+			tempRes.setB(obj1.getB());
+		}
+		else {
+			tempRes.setA((obj1.getA() * this.getB()) + (this.getA() * obj1.getB()));
+			tempRes.setB(obj1.getB() * this.getB());
+		}
 		return tempRes;
 	}
 }
@@ -119,9 +124,14 @@ class ExtendedFraction extends Fraction {
 	public ExtendedFraction subtraction(ExtendedFraction obj1) {
 		ExtendedFraction tempRes = new ExtendedFraction();
 		
-		tempRes.setA(obj1.getA() - this.getA());
-		tempRes.setB(obj1.getB() - this.getB());
-		
+		if(obj1.getB() == this.getB()) {
+			tempRes.setA(obj1.getA() - this.getB());
+			tempRes.setB(obj1.getB());
+		}
+		else {
+			tempRes.setA((obj1.getA() * this.getB()) - (this.getA() * obj1.getB()));
+			tempRes.setB(obj1.getB() * this.getB());
+		}
 		return tempRes;
 	}
 }

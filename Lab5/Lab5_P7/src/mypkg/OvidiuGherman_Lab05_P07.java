@@ -14,7 +14,33 @@ import java.util.Scanner;
  *  maximum altitude is reached half-way between A and B).
  */
 interface ability {
-	public double move(GeoLoc B);
+	public double move(Point B);
+}
+
+class Point{
+	private GeoLoc startLoc;
+	private GeoLoc endLoc;
+	
+	Point() {
+		startLoc = new GeoLoc();
+		endLoc = new GeoLoc();
+	}
+	Point(GeoLoc startLoc, GeoLoc endLoc) {
+		this.startLoc = startLoc;
+		this.endLoc = endLoc;
+	}
+	public GeoLoc getStartLoc() {
+		return this.startLoc;
+	}
+	public void setStartLoc(GeoLoc startLoc) {
+		this.startLoc = startLoc;
+	}
+	public GeoLoc getEndLoc() {
+		return this.endLoc;
+	}
+	public void setEndLoc(GeoLoc endLoc) {
+		this.endLoc = endLoc;
+	}
 }
 
 class GeoLoc {
@@ -30,13 +56,13 @@ class GeoLoc {
 		this.y = y;
 	}
 	public double getX() {
-		return x;
+		return this.x;
 	}
 	public void setX(double x) {
 		this.x = x;
 	}
 	public double getY() {
-		return y;
+		return this.y;
 	}
 	public void setY(double y) {
 		this.y = y;
@@ -78,7 +104,6 @@ abstract class Vehicle implements ability{
 		this.max_speed = max_speed;
 	}
 }
-
 class MotorizedVehicle extends Vehicle {
 	private double moving_speed;
 	private GeoLoc location;
@@ -111,17 +136,17 @@ class MotorizedVehicle extends Vehicle {
 		this.location.setX(position[0]);
 		this.location.setY(position[1]);
 	}
-	public double move(GeoLoc B ) {
-		final double EARTH_RADIUS = 6371; // Radius of the earth in km	
+	public double move(Point B ) {
+		final double earth_rad = 6371; // Radius of the earth in km	
 		double distLat, distLon, a, c, distance;
 		
-		distLat = Math.toRadians(B.getX() - this.location.getX());
-		distLon = Math.toRadians(B.getY() - this.location.getY());
+		distLat = Math.toRadians(B.getEndLoc().getX() - B.getStartLoc().getX());
+		distLon = Math.toRadians(B.getEndLoc().getY() - B.getStartLoc().getY());
 		
-		a = Math.pow(Math.sin(distLat / 2),2) + Math.cos(Math.toRadians(this.getLocation().getX())) * Math.cos(Math.toRadians(B.getX())) * Math.pow(Math.sin(distLon / 2), 2);
+		a = Math.pow(Math.sin(distLat / 2),2) + Math.cos(Math.toRadians(B.getStartLoc().getX())) * Math.cos(Math.toRadians(B.getEndLoc().getX())) * Math.pow(Math.sin(distLon / 2), 2);
 		c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 		
-		distance = EARTH_RADIUS * c;
+		distance = earth_rad * c;
 		
 		
 		return distance/this.moving_speed;
@@ -150,31 +175,30 @@ class Airplane extends MotorizedVehicle {
 	}
 	
 	@Override
-	public double move(GeoLoc B) {
-		final double earth_rad = 6371; // Radius of the earth(in km)
-		double distLat, distLon, a, c, distance, height;
+	public double move(Point B) {
+		final double earth_rad = 6371; // Radius of the earth(KM)
+		double distLat, distLon, a, c, distance, totalDistanceWithAltitude;
 		
-		distLat = Math.toRadians(B.getX() - this.getLocation().getX());
-		distLon = Math.toRadians(B.getY() - this.getLocation().getY());
+		distLat = Math.toRadians(B.getEndLoc().getX() - B.getStartLoc().getX());
+		distLon = Math.toRadians(B.getEndLoc().getY() - B.getStartLoc().getY());
 		
-		a = Math.pow(Math.sin(distLat / 2),2) + Math.cos(Math.toRadians(this.getLocation().getX())) * Math.cos(Math.toRadians(B.getX())) * Math.pow(Math.sin(distLon / 2), 2);
+		a = Math.pow(Math.sin(distLat / 2),2) + Math.cos(Math.toRadians(B.getStartLoc().getX())) * Math.cos(Math.toRadians(B.getEndLoc().getX())) * Math.pow(Math.sin(distLon / 2), 2);
 		c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 		
-		distance = earth_rad * c;
-			
-	    
-	  return distance/this.getMoving_speed();
+		distance = earth_rad * c * 1000;
+        totalDistanceWithAltitude = Math.sqrt(Math.pow(distance, 2) + Math.pow(this.z * 2, 2)) / 1000;
 
+        return totalDistanceWithAltitude / this.getMoving_speed();
 	}
 }
 
 public class OvidiuGherman_Lab05_P07 {
 	
-	public static <T> void displayData(T obj, GeoLoc B) {
+	public static <T> void displayData(T obj, Point B) {
 		if(obj.getClass() == MotorizedVehicle.class) {
 			System.out.println("\n:::Motorized Vehicle Data:::");
 			System.out.println("Current Position: " + ((MotorizedVehicle) obj).getLocation().getX() + "|" + ((MotorizedVehicle) obj).getLocation().getY());
-			System.out.println("Destination: " + B.getX() + "|" + B.getY());
+			System.out.println("Destination: " + B.getEndLoc().getX() + "|" + B.getEndLoc().getY());
 			System.out.println("Max no. of passangers: " + ((MotorizedVehicle) obj).getMax_no_of_passangers());
 			System.out.println("Color: " + ((MotorizedVehicle) obj).getColor());
 			System.out.println("Max speed: " + ((MotorizedVehicle) obj).getMax_speed());
@@ -185,7 +209,7 @@ public class OvidiuGherman_Lab05_P07 {
 		if(obj.getClass() == Airplane.class) {
 			System.out.println("\n:::Airplane Data:::");
 			System.out.println("Current Position: " + ((Airplane) obj).getLocation().getX() + "|" + ((Airplane) obj).getLocation().getY() + "|" + ((Airplane) obj).getZ()+ " (ALTITUDE)");
-			System.out.println("Destination: " + B.getX() + "|" + B.getY());
+			System.out.println("Destination: " + B.getEndLoc().getX() + "|" + B.getEndLoc().getY());
 			System.out.println("Max no. of passangers: " + ((Airplane) obj).getMax_no_of_passangers());
 			System.out.println("Color: " + ((Airplane) obj).getColor());
 			System.out.println("Max speed: " + ((Airplane) obj).getMax_speed());
@@ -221,7 +245,10 @@ public class OvidiuGherman_Lab05_P07 {
 		MotorizedVehicle car = new MotorizedVehicle(max_no_of_passangers, maxSpeed, movingSpeed, lat, lon, color);
 		
 		System.out.print("Please enter the destination(Lon,Lat): ");
-		GeoLoc B = new GeoLoc(scanner.nextDouble(), scanner.nextDouble());
+		GeoLoc destination = new GeoLoc(scanner.nextDouble(), scanner.nextDouble());
+		Point B = new Point();
+		B.setStartLoc(car.getLocation());
+		B.setEndLoc(destination);
 		
 		//OUTPUT:MOTORIZED VEHICLE
 		displayData(car, B);
@@ -250,7 +277,9 @@ public class OvidiuGherman_Lab05_P07 {
 		Airplane plane = new Airplane(max_no_of_passangers, maxSpeed, movingSpeed, lat, lon, altitude, color);
 		
 		System.out.print("Please enter the destination(Lon,Lat): ");
-		B = new GeoLoc(scanner.nextDouble(), scanner.nextDouble());
+		destination = new GeoLoc(scanner.nextDouble(), scanner.nextDouble());
+		B.setStartLoc(plane.getLocation());
+		B.setEndLoc(destination);
 		
 		//OUTPUT:AIRPLANE
 		displayData(plane, B);
