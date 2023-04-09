@@ -65,5 +65,4 @@ public class OvidiuGherman_Lab06_P01 {
 		
 		scanner.close();
 	}
-
 }
