@@ -50,8 +50,8 @@ public class OvidiuGherman_Lab06_P02 {
 			System.out.print("The element at the position " + indexInt + " is: " + number[indexInt] + " ");		
 			System.out.print("\nPlease enter a value that will divide the index: "); 
 			int div = scanner.nextInt();
-			System.out.print("The result of the division is: " + (indexInt / div));
-			System.out.print("\nThe last element of the array is(size+1): " + number[number.length]);
+			System.out.print("The result of the division is: " + ((float)indexInt / (float)div) + "\n");
+			System.out.print("\nThe last element of the array is(size+1): " + number[number.length - 1] + "\n");
 		} catch(NumberFormatException except) {
 			System.out.println("Parsing error!(Setting index to starting position)");
 			indexInt = 0;
