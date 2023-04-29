@@ -12,6 +12,81 @@ import java.util.Scanner;
  * Instantiate Class2 and call the defined methods for determining the sum and product of some values read from the keyboard.
  */
 
+/*
+ *  ---- Class2 ----
+	package mypkg;
+	import int_Pkg.*;
+
+	public class Class2 extends Class1 implements Int1, Int2{
+
+		public Class2() {
+			super();
+		}
+	
+		@Override
+		public int sum() {
+			return (int) (this.getA() + this.getB());
+		}
+	
+		@Override
+		public double product() {
+			return this.getA() * this.getB();
+		}
+	
+		public void printDefault() {
+			System.out.print("\nThe sum of the two numbers is(default): " + Int1.super.sum());	
+			System.out.print("\nThe product of the two numbers is(default): " + Int2.super.product());
+		}
+	}
+ *  ---- Class2 ----
+ *  ---- Int1 ----
+    package int_Pkg;
+
+	public interface Int1 {
+		int a = 5;
+		int b = 4;
+		default public int sum() {
+			return a + b;
+		}
+	}
+ *  ---- Int1 ----
+ *  ---- Int2 ----
+    package int_Pkg;
+
+	public interface Int2 {
+		double a = 4.3;
+		double b = 3.4;
+		default double product() {
+			return a * b;
+		}
+	}	
+ *  ---- Int2 ----
+ *  ---- Class1 ----
+   	package int_Pkg;
+
+	public class Class1 {
+		protected double a;
+		protected double b;
+		public Class1() {
+			this.a = 0.0;
+			this.b = 0.0;
+		}
+		public double getA() {
+			return this.a;
+		}
+		public void setA(double a) {
+			this.a = a;
+		}
+		public double getB() {
+			return this.b;
+		}
+		public void setB(double b) {
+			this.b = b;
+		}
+	}
+ *  ---- Class1 ----
+ */
+
 public class OvidiuGherman_Lab06_P03 {
 
 	public static void main(String[] args) {
