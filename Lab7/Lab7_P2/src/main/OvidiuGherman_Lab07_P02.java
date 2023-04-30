@@ -80,6 +80,7 @@ class Calculator {
 
 
 class CalculatorByOL {
+<<<<<<< HEAD
 	    public static int addition(int a, int b) {
 	        return a + b;
 	    }
@@ -128,13 +129,67 @@ class CalculatorByOL {
 	    public static String division(String a, String b) throws Exception {
 	    	throw new Exception("String division unavailable(OL Method)!");
 	    }	    
+=======
+	public static int addition(int a, int b) {
+		return a + b;
+	}
+	public static double addition(double a, double b) {
+		return a + b;
+	}
+	public static String addition(String a, String b) {
+		return a + b;
+	}
+	public static float addition(float a, float b) {
+		return a + b;
+	}
+	public static int subtraction(int a, int b) {
+		return a - b;
+	}
+	public static double subtraction(double a, double b) {
+		return a - b;
+	}
+	public static String subtraction(String a, String b) {
+		return a.replaceAll(b, "");
+	}
+	public static float subtraction(float a, float b) {
+		return a - b;
+	}
+	public static int multiplication(int a, int b) {
+		return a*b;
+	}
+	public static double multiplication(double a, double b) {
+		return a*b;
+	}
+	public static float multiplication(float a, float b) {
+		return a*b;
+	}
+	public static String multiplication(String a, String b) throws Exception {
+		throw new Exception("String multiplication unavailable(OL Method)!");
+	}
+	public static int division(int a, int b) throws ArithmeticException{
+		return a/b;
+	}
+	public static double division(double a, double b) throws ArithmeticException{
+		return a/b;
+	}
+	public static float division(float a, float b) throws ArithmeticException{
+		return a/b;
+	}
+	public static String division(String a, String b) throws Exception {
+		throw new Exception("String division unavailable(OL Method)!");
+	}            
+>>>>>>> dev
 }
 
 public class OvidiuGherman_Lab07_P02 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dev
 		try {
 			System.out.print("Please enter 2 integers: ");
 			Integer nr1 = scanner.nextInt();
@@ -147,13 +202,21 @@ public class OvidiuGherman_Lab07_P02 {
 			System.out.println("(Overload)->SUBTRACTION(INT): " + CalculatorByOL.subtraction(nr1, nr2));
 			System.out.println("(Generic)->DIVISION(INT): " + Calculator.division(nr1, nr2));
 			System.out.println("(Overload)->DIVISION(INT): " + CalculatorByOL.division(nr1, nr2));
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> dev
 		} catch(ArithmeticException except) {
 			System.out.println("Division by 0 undefined!");
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dev
 		try {
 			System.out.print("Please enter 2 doubles: ");
 			Double nr3 = scanner.nextDouble();
@@ -171,7 +234,11 @@ public class OvidiuGherman_Lab07_P02 {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dev
 		try {
 			System.out.print("Please enter 2 floats: ");
 			Float nr5 = scanner.nextFloat();
@@ -189,15 +256,25 @@ public class OvidiuGherman_Lab07_P02 {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dev
 		System.out.print("Please enter 2 strings: ");
 		scanner.nextLine();
 		String str1 = scanner.next();
 		String str2 = scanner.next();
 		scanner.close();
+<<<<<<< HEAD
 		
 		
 		try {	
+=======
+
+
+		try {        
+>>>>>>> dev
 			System.out.println("(Generic)->SUM(STRING): " + Calculator.addition(str1, str2));
 			System.out.println("(Overload)->SUM(STRING): " + CalculatorByOL.addition(str1, str2));
 			System.out.println("(Generic)->MULTIPLY(STRING): " + Calculator.multiplication(str1, str2));
@@ -205,8 +282,13 @@ public class OvidiuGherman_Lab07_P02 {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+<<<<<<< HEAD
 		
 		try {	
+=======
+
+		try {        
+>>>>>>> dev
 			System.out.println("(Generic)->SUBTRACTION(STRING): " + Calculator.subtraction(str1, str2));
 			System.out.println("(Overload)->SUBTRACTION(STRING): " + CalculatorByOL.subtraction(str1, str2));
 			System.out.println("(Generic)->DIVISION(STRING): " + Calculator.division(str1,str2));
@@ -214,7 +296,11 @@ public class OvidiuGherman_Lab07_P02 {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> dev
 	}
 
 }
