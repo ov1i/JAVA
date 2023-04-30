@@ -14,64 +14,64 @@ import java.util.Scanner;
 class Calculator {
 	@SuppressWarnings("unchecked")
 	public static <T> T addition(T val1, T val2) throws Exception {
-		if(val1.getClass().equals(Integer.class) && val1.getClass().equals(Integer.class)) {
+		if(val1.getClass().equals(Integer.class) && val2.getClass().equals(Integer.class)) {
 			return (T)(Integer)((int)val1 + (int) val2);
 		}
-		else if(val1.getClass().equals(Double.class) && val1.getClass().equals(Double.class)) {
+		else if(val1.getClass().equals(Double.class) && val2.getClass().equals(Double.class)) {
 			return (T)(Double)((double)val1 + (double) val2);
 		}
-		else if(val1.getClass().equals(Float.class) && val1.getClass().equals(Float.class)) {
+		else if(val1.getClass().equals(Float.class) && val2.getClass().equals(Float.class)) {
 			return (T)(Float)((float)val1 + (float) val2);
 		}
-		else if(val1.getClass().equals(String.class) && val1.getClass().equals(String.class)) {
+		else if(val1 instanceof String && val2 instanceof String) {
 			return (T)(String)((String)val1 + (String) val2);
 		}
 		throw new Exception("Invalid data type!");
 	}
 	@SuppressWarnings("unchecked")
 	public static <T> T subtraction(T val1, T val2) throws Exception {
-		if(val1.getClass().equals(Integer.class) && val1.getClass().equals(Integer.class)) {
+		if(val1.getClass().equals(Integer.class) && val2.getClass().equals(Integer.class)) {
 			return (T)(Integer)((int)val1 - (int) val2);
 		}
-		else if(val1.getClass().equals(Double.class) && val1.getClass().equals(Double.class)) {
+		else if(val1.getClass().equals(Double.class) && val2.getClass().equals(Double.class)) {
 			return (T)(Double)((double)val1 - (double) val2);
 		}
-		else if(val1.getClass().equals(Float.class) && val1.getClass().equals(Float.class)) {
+		else if(val1.getClass().equals(Float.class) && val2.getClass().equals(Float.class)) {
 			return (T)(Float)((float)val1 - (float) val2);
 		}
-		else if(val1.getClass().equals(String.class) && val1.getClass().equals(String.class)) {
+		else if(val1.getClass().equals(String.class) && val2.getClass().equals(String.class)) {
 			return (T)((String) val1).replaceAll((String)val2, "");
 		}
 		throw new Exception("Invalid data type!");
 	}
 	@SuppressWarnings("unchecked")
 	public static <T> T multiplication(T val1, T val2) throws Exception {
-		if(val1.getClass().equals(Integer.class) && val1.getClass().equals(Integer.class)) {
+		if(val1.getClass().equals(Integer.class) && val2.getClass().equals(Integer.class)) {
 			return (T)(Integer)((int)val1 * (int) val2);
 		}
-		else if(val1.getClass().equals(Double.class) && val1.getClass().equals(Double.class)) {
+		else if(val1.getClass().equals(Double.class) && val2.getClass().equals(Double.class)) {
 			return (T)(Double)((double)val1 * (double) val2);
 		}
-		else if(val1.getClass().equals(Float.class) && val1.getClass().equals(Float.class)) {
+		else if(val1.getClass().equals(Float.class) && val2.getClass().equals(Float.class)) {
 			return (T)(Float)((float)val1 * (float) val2);
 		}
-		else if(val1.getClass().equals(String.class) && val1.getClass().equals(String.class)) {
+		else if(val1.getClass().equals(String.class) && val2.getClass().equals(String.class)) {
 			throw new Exception("String multiplication unavailable!");
 		}
 		throw new Exception("Invalid data type!");
 	}
 	@SuppressWarnings("unchecked")
 	public static <T> T division(T val1, T val2) throws ArithmeticException, Exception {
-		if(val1.getClass().equals(Integer.class) && val1.getClass().equals(Integer.class)) {
+		if(val1.getClass().equals(Integer.class) && val2.getClass().equals(Integer.class)) {
 			return (T)(Integer)((int)val1 / (int) val2);
 		}
-		else if(val1.getClass().equals(Double.class) && val1.getClass().equals(Double.class)) {
+		else if(val1.getClass().equals(Double.class) && val2.getClass().equals(Double.class)) {
 			return (T)(Double)((double)val1 / (double) val2);
 		}
-		else if(val1.getClass().equals(Float.class) && val1.getClass().equals(Float.class)) {
+		else if(val1.getClass().equals(Float.class) && val2.getClass().equals(Float.class)) {
 			return (T)(Float)((float)val1 / (float) val2);
 		}
-		else if(val1.getClass().equals(String.class) && val1.getClass().equals(String.class)) {
+		else if(val1.getClass().equals(String.class) && val2.getClass().equals(String.class)) {
 			throw new Exception("String division unavailable!");
 		}
 		throw new Exception("Invalid data type!");

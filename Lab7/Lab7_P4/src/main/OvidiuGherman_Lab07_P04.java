@@ -7,57 +7,97 @@ package main;
  * predefined file types. Order the file list based on size and print the result.
  */
 
-class UserFile {
-	private String name;
-	private String extension;
-	private String type;
-	private byte size;
-	
-	public UserFile() {
-		this.name = null;
-		this.extension = null;
-		this.type = null;
-		this.size = 0;
-	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getExtension() {
-		return extension;
-	}
-
-	public void setExtension(String extension) {
-		this.extension = extension;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public byte getSize() {
-		return size;
-	}
-
-	public void setSize(byte size) {
-		this.size = size;
-	}
-}
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class OvidiuGherman_Lab07_P04 {
+    public static void main(String[] args) {
+        ArrayList<UserFile> files = addFiles();
+        orderFilesAndShow(files);
+    }
 
-	public static void main(String[] args) {
-		byte e = 127;
-		System.out.println(e);
-	}
+    private static ArrayList<UserFile> addFiles() {
+        ArrayList<UserFile> files = new ArrayList<>();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter number of files: ");
+            int noFiles = scanner.nextInt();
+            for (int i = 0; i < noFiles; i++) {
+                System.out.printf("\nFile %d\n", i + 1);
+                System.out.print("Name: ");
+                String name = scanner.next();
+                System.out.print("Extension: ");
+                String extension = scanner.next();
+                System.out.print("Type (image, text or application): ");
+                String type = scanner.next();
+                while (!isValidType(type)) {
+                    System.out.println("\nNot a valid input!\nTry again!");
+                    System.out.print("Type (image, text or application): ");
+                    type = scanner.next();
+                }
+                System.out.print("Enter file size in bytes: ");
+                int sizeInBytes = scanner.nextInt();
+                UserFile file = new UserFile(name, extension, type, sizeInBytes);
+                files.add(file);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return files;
+    }
 
+    private static boolean isValidType(String type) {
+        return type.equalsIgnoreCase("image")
+                || type.equalsIgnoreCase("text")
+                || type.equalsIgnoreCase("application");
+    }
+
+    private static void orderFilesAndShow(ArrayList<UserFile> files) {
+        System.out.println("\nYour ordered list: ");
+        Collections.sort(files);
+        for (UserFile file : files) {
+            System.out.printf("\nFile name: %s.%s\n", file.getName(), file.getExtension());
+            System.out.printf("File size: %d bytes\n", file.getSizeInBytes());
+        }
+    }
+}
+
+class UserFile implements Comparable<UserFile> {
+    private String name;
+    private String extension;
+    private String type;
+    private int sizeInBytes;
+
+    public UserFile(String name, String extension, String type, int sizeInBytes) {
+        this.name = name;
+        this.extension = extension;
+        this.type = type;
+        this.sizeInBytes = sizeInBytes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public int getSizeInBytes() {
+        return sizeInBytes;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public int compareTo(UserFile file) {
+        if (this.getSizeInBytes() != file.getSizeInBytes()) {
+            return this.getSizeInBytes() - file.getSizeInBytes();
+        } else {
+            return this.getName().compareTo(file.getName());
+        }
+    }
 }
