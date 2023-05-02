@@ -4,35 +4,51 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
-import java.text.DateFormatSymbols;
-import java.util.Objects;
-import java.util.Scanner;
 
-import static java.lang.System.exit;
-//Read from the keyboard some strings representing dates formatted as DD/MM/YYYY.
-// Print the dates as DD month YYYY, where month is the expanded version of the MM,
-// and also display messages if the year is leap. The program exits when the user types in X or
-// x from KB. You may use DateFormatSymbols class for month conversion.
+/* 1.
+ * Using a KB reading mechanism (BufferedReader/InputStreamReader) input: a message of String type, a day as an
+ * integer, a month as a String and a year as an integer variable. The process will end by passing to a new line, or by typing
+ * a special String. Separate and display the tokens on different rows. Display all fields extracted from the stream as appeared.
+ * Recommendation: use the StreamTokenizer class, the attributes sval, nval and the TT_EOL constant.
+ * Consider the case in which the application is not aware of the entered data type (numbers, words). Use the constants
+ * TT_NUMBER, TT_WORD.
+ */
+
 public class OvidiuGherman_Lab08_P01 {
 	public static void main(String[] args) {
-		//Scanner scanner = new Scanner(System.in);
-		BufferedReader inputStream;
-
-
-		// DateFormatSymbols day = new DateFormatSymbols();
+		BufferedReader buffer = null;
+		StreamTokenizer tokens = null;
+		System.out.print("Please enter something(such as: String->Message, Integer->Day, String->Month): ");
+		buffer = new BufferedReader(new InputStreamReader(System.in));
+		tokens = new StreamTokenizer(buffer);  
+		tokens.eolIsSignificant(true);
 
 		try {
-			inputStream = new BufferedReader(new InputStreamReader(System.in));
-			StreamTokenizer st = new StreamTokenizer(inputStream);
-			System.out.println("Enter a day, a month and a year in the format DD/MM/YYYY or X, x to exit: ");
-			while (st.nextToken()!= StreamTokenizer.TT_EOL) {
-				if (st.ttype == StreamTokenizer.TT_WORD && st.sval.contains("/")) {
-					st.sval = st.sval.replace("o", "*");
-					System.out.println("The new string is: "+st.sval);
+			while (tokens.nextToken() != StreamTokenizer.TT_EOL) {
+				if(tokens.ttype == StreamTokenizer.TT_WORD) {
+					if(tokens.sval.toLowerCase().equals("end")) {
+						System.out.println("Ending String found! ");					
+						break;
+					}
+					else if(tokens.ttype == StreamTokenizer.TT_EOL) {
+						System.out.println("End of line/stream reached!");
+					}
+					else {
+						System.out.println("Word: " + tokens.sval);
+					}
 				}
+				else if(tokens.ttype == StreamTokenizer.TT_NUMBER) {
+					System.out.println("Number: " + (int)tokens.nval);
+				}
+
+				else {
+					System.out.println("Unknown data type!");
+				}			
 			}
+			
+			buffer.close();
 		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}  
+			System.out.println(e.getMessage());
+		}
 	}
 }
