@@ -28,7 +28,6 @@ public class OvidiuGherman_Lab08_P03 {
 		String[] months = format.getMonths();
 		try {
 			while (true) {
-
 				tokens.nextToken();
 				if(tokens.ttype == StreamTokenizer.TT_WORD && (tokens.sval.equals("x") || tokens.sval.equals("X"))) {
 					System.out.println("Exiting the program!");
