@@ -29,7 +29,7 @@ public class OvidiuGherman_Lab08_P04 {
 			byte[] publicKey = strPublicKey.getBytes();
 			byte[] id = new byte[privateKey.length];
 
-			for (int i = 0; i < id.length; i++) {
+			for (int i = 0; i < privateKey.length; i++) {
 				for(int j = 0; j < publicKey.length; j++) {
 					id[i] = (byte) (privateKey[i] ^ publicKey[j]);
 				}
