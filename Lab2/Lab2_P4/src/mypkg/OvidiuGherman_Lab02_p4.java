@@ -14,7 +14,6 @@ public class OvidiuGherman_Lab02_p4 {
 			n = scanner.nextInt();
 		}while(n <= 0);
 		
-		
 		scanner.close();
 		
 		System.out.print("The dividers of " + n + " are: ");

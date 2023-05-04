@@ -25,11 +25,11 @@ public class OvidiuGherman_Lab03_p4 {
     }
     
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		int nr = 10;
 		System.out.println("Base Conversion(M1): ");
 		baseConvM1(nr);
 		
-		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Please enter a new number: ");
 		nr = scanner.nextInt();

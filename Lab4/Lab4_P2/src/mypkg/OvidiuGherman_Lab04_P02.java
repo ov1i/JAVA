@@ -56,7 +56,6 @@ public class OvidiuGherman_Lab04_P02 {
 			System.out.print("-Array empty-\n");
 		}
 		
-		
 		obj1 = null;
 		System.gc();
 		

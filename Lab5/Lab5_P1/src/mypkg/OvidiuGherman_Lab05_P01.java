@@ -185,7 +185,6 @@ public class OvidiuGherman_Lab05_P01 {
 		DivInterface divObj = (double n1, double n2)-> n1 / n2;
 		MultInterface multObj = (double n1, double n2)-> n1 * n2;	
 		
-		
 		System.out.println("\n\n\t::::M3::::\n");
 		System.out.println("RESULT(+): " + app.opAdd(nr1, nr2, addObj));
 		System.out.println("RESULT(-): " + app.opSub(nr1, nr2, subObj));

@@ -99,7 +99,6 @@ public class OvidiuGherman_Lab07_P06 {
 				    return comp.compareTo(o1);	
 					}
 				);
-		
 		//list.sort((o1,o2) -> Integer.compare(o2.getAge(), o1.getAge()));
 
 		System.out.println("Output(#2 - Ordered descending by age): ");
