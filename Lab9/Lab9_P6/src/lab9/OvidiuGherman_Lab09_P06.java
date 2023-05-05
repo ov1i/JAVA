@@ -17,58 +17,80 @@ import java.util.Scanner;
 public class OvidiuGherman_Lab09_P06 {
 	static BufferedWriter writer = null;
 	static BufferedReader reader = null;
-	static String input = null;
+	static String input = "";
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		
-		File file = new File("output.txt");
+		File file = new File("output.txt");	
+
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			reader = new BufferedReader(new FileReader(file));
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
-		
-		
+
+
+		System.out.println("Please enter some information(type end to stop gathering information): ");
 		while(true) {
-			input = scanner.next();
-			if(input.equalsIgnoreCase("end")) {
-				try {
-					writer.close();
-					reader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			String line = scanner.nextLine();
+			if(line.equalsIgnoreCase("end")) {
 				break;
 			}
-			else {
-				Thread writingThread = new Thread(() -> {
-					synchronized (file) {
-						try {
-							writer = new BufferedWriter(new FileWriter(file));
-							writer.write(input + "\n");
-						} catch (IOException e) {						
-							e.printStackTrace();
-						}
-					}
-				});
-				Thread readingThred = new Thread(() -> {
-					synchronized (file) {
-						try {
-							String line = null;
-							while((line = reader.readLine()) != null) {
-								System.out.println(line);
-							}
-						} catch (IOException e) {						
-							e.printStackTrace();
-						}
-					}
-				});
-				writingThread.start();
-				readingThred.start();
-			}
+			input += line + "\n";
 		}
 		scanner.close();	
+		Thread readingThred = new Thread(() -> {
+			synchronized (file) {
+				try {
+					String line = null;
+					while((line = reader.readLine()) != null) {
+						System.out.println(line);
+					}
+				} catch (IOException e) {						
+					e.printStackTrace();
+				} 
+			}
+		});		
+		Thread writingThread = new Thread(() -> {
+			synchronized (file) {
+				try {
+					writer.write(input);
+				} catch (IOException e) {						
+					e.printStackTrace();
+				}
+			}
+
+		});		
+
+
+		writingThread.start();
+
+		try {
+			writingThread.join();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		readingThred.start();
+		System.out.println("File data: ");
+		try {
+			readingThred.join();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 }
