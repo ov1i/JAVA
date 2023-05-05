@@ -37,7 +37,7 @@ class fibGenerator{
 	public synchronized void printResult() {
 		System.out.println("The desired fib number is: " + this.value);
 	}
-	public ArrayList<Integer> getFibArray() {
+	public synchronized ArrayList<Integer> getFibArray() {
 		return fibArray;
 	}
 	public int getValue() {
@@ -71,21 +71,8 @@ public class OvidiuGherman_Lab09_P03 {
 		System.out.println("Threads created succesfully!");
 
 		computeAndDisplayThread.start();
-		System.out.println("computeAndDisplayThread started!");
-		try {
-			computeAndDisplayThread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
 		displayArrayOfResultsThread.start();
-		System.out.println("displayArrayOfResultsThread started!");
-		try {
-			displayArrayOfResultsThread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
 
-		System.out.println("Both threads finished their task!");
 	}
 }

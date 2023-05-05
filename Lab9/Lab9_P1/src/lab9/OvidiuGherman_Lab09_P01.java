@@ -29,7 +29,6 @@ class MyClass implements Runnable {
 				e.printStackTrace();
 			}
 		}
-
 	}
 }
 
