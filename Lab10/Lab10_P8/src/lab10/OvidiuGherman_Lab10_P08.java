@@ -29,7 +29,7 @@ class MyJFrame extends JFrame {
 		this.setLocationRelativeTo(null);
 	}
 }
-class MyJPanel extends JPanel implements ActionListener{
+class MyJPanel extends JPanel implements ActionListener {
 
 	private BufferedImage backBuffer;
 	private Graphics2D backBufferGraphics;
